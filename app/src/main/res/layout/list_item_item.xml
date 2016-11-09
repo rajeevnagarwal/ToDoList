@@ -14,12 +14,6 @@
         tools:text="Item Title"
         android:textSize="25sp"
         android:padding="4dp"/>
-    <TextView
-        android:id="@+id/list_item_item_description_text_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="italic"
-        tools:text="Item Description"
-        android:padding="4dp"/>
+
 
 </LinearLayout>

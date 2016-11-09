@@ -11,16 +11,15 @@ import java.util.UUID;
 public class ItemActivity extends SingleFragmentActivity {
 
     private static final String EXTRA_ITEM_ID = "com.example.rajeevnagarwal.todolist.item_id";
-    public static Intent newIntent(Context packageContext, UUID itemId)
+    public static Intent newIntent(Context packageContext, Item itemId)
     {
         Intent intent = new Intent(packageContext,ItemActivity.class);
         intent.putExtra(EXTRA_ITEM_ID,itemId);
         return intent;
     }
-
     @Override
     protected Fragment createFragment() {
-        UUID itemId = (UUID)getIntent().getSerializableExtra(EXTRA_ITEM_ID);
+        Item itemId = (Item)getIntent().getSerializableExtra(EXTRA_ITEM_ID);
         return ItemFragment.newInstance(itemId);
     }
 }

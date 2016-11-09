@@ -14,13 +14,11 @@ import java.util.UUID;
 
 public class ItemPagerActivity extends AppCompatActivity {
 
+
     private static final String EXTRA_ITEM_ID =
             "com.example.rajeevnagarwal.todolist.item_id";
 
-    private ViewPager mViewPager;
-    private List<Item> mItems;
-
-    public static Intent newIntent(Context packageContext, UUID itemId) {
+    public static Intent newIntent(Context packageContext, Item itemId) {
         Intent intent = new Intent(packageContext, ItemPagerActivity.class);
         intent.putExtra(EXTRA_ITEM_ID, itemId);
         return intent;
@@ -29,33 +27,18 @@ public class ItemPagerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_item_pager);
+        setContentView(R.layout.activity_fragment);
 
-        UUID itemId = (UUID) getIntent()
+        Item itemId = (Item) getIntent()
                 .getSerializableExtra(EXTRA_ITEM_ID);
+        FragmentManager fm = getSupportFragmentManager();
+        Fragment fragment = fm.findFragmentById(R.id.fragment_container);
 
-        mViewPager = (ViewPager) findViewById(R.id.activity_item_pager_view_pager);
-
-        mItems = ItemLab.get(this).getItems();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        mViewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
-            @Override
-            public Fragment getItem(int position) {
-                Item item = mItems.get(position);
-                return ItemFragment.newInstance(item.getId());
-            }
-
-            @Override
-            public int getCount() {
-                return mItems.size();
-            }
-        });
-
-        for (int i = 0; i < mItems.size(); i++) {
-            if (mItems.get(i).getId().equals(itemId)) {
-                mViewPager.setCurrentItem(i);
-                break;
-            }
+        if (fragment == null) {
+            fragment = ItemFragment.newInstance(itemId);
+            fm.beginTransaction()
+                    .add(R.id.fragment_container, fragment)
+                    .commit();
         }
     }
 }

@@ -53,8 +53,7 @@ public class ItemListFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item1) {
         switch   (item1.getItemId())   {
             case R.id.menu_item_new_item: Item  item  =  new   Item();
-                ItemLab.get(getActivity()).addItem(item);
-                Intent intent  =   ItemPagerActivity.newIntent(getActivity(), item.getId());
+                Intent intent  =   ItemPagerActivity.newIntent(getActivity(), item);
                 startActivity(intent);
                 return true;
             default:      return super.onOptionsItemSelected(item1);
@@ -84,9 +83,6 @@ public class ItemListFragment extends Fragment {
             implements View.OnClickListener {
 
         private TextView mTitleTextView;
-        private TextView mDescriptionTextView;
-        //private TextView mDateTextView;
-        //private CheckBox mSolvedCheckBox;
 
         private Item mItem;
 
@@ -95,22 +91,17 @@ public class ItemListFragment extends Fragment {
             itemView.setOnClickListener(this);
 
             mTitleTextView = (TextView) itemView.findViewById(R.id.list_item_item_title_text_view);
-            mDescriptionTextView = (TextView)itemView.findViewById(R.id.list_item_item_description_text_view);
-            //mDateTextView = (TextView) itemView.findViewById(R.id.list_item_crime_date_text_view);
-            //mSolvedCheckBox = (CheckBox) itemView.findViewById(R.id.list_item_crime_solved_check_box);
         }
 
         public void bindItem(Item item) {
             mItem = item;
             mTitleTextView.setText(mItem.getTitle());
-            mDescriptionTextView.setText(mItem.getDescription());
-            //mDateTextView.setText(mCrime.getDate().toString());
-            //mSolvedCheckBox.setChecked(mCrime.isSolved());
+
         }
 
         @Override
         public void onClick(View v) {
-            Intent intent = ItemPagerActivity.newIntent(getActivity(), mItem.getId());
+            Intent intent =DetailActivity.newIntent(getActivity(), mItem.getId());
             startActivity(intent);
         }
     }

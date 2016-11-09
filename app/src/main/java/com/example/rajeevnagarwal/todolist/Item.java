@@ -1,12 +1,13 @@
 package com.example.rajeevnagarwal.todolist;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
  * Created by Rajeev Nagarwal on 11/2/2016.
  */
 
-public class Item {
+public class Item implements Serializable{
     private UUID mId;
     private String mTitle;
     private String mDescription;

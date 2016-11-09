@@ -9,8 +9,9 @@
     <string name="item_details_label">Description</string>
     <string name="item_solved_label">Solved</string>
     <string name="date_picker_title">Date of item:</string>
-    <string  name="new_item">New Item</string>
+    <string name="new_item">New Item</string>
     <string name="show_subtitle">Show Subtitle</string>
     <string name="hide_subtitle">Hide Subtitle</string>
     <string name="subtitle_format">%1$s items</string>
+    <string name="add">Add Item</string>
 </resources>
