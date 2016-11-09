@@ -15,6 +15,7 @@ public class Item implements Serializable{
     {
         mId = UUID.randomUUID();
     }
+    public Item(UUID id){this.mId = id;}
     public UUID getId()
     {
         return this.mId;

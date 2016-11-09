@@ -3,11 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/drawable_recyclerview"
+    android:padding="5dp"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/list_item_item_title_text_view"
+        android:background="@drawable/drawable_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"

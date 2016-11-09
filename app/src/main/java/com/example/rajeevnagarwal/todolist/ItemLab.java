@@ -12,6 +12,8 @@ import java.util.UUID;
 
 public class ItemLab {
     private static ItemLab sItemLab;
+    DatabaseHandler db;
+
 
     private ArrayList<Item> mItems;
 
@@ -23,11 +25,15 @@ public class ItemLab {
     }
 
     private ItemLab(Context context) {
-        mItems = new ArrayList<>();
+        db = new DatabaseHandler(context);
+        mItems = new ArrayList<Item>();
+        mItems = db.print();
+       // mItems = new ArrayList<>();
     }
     public  void addItem(Item c)
     {
         mItems.add(c);
+        db.addItem(c.getId().toString(),c.getTitle(),c.getDescription());
     }
 
 
